@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-purple: #b527fc;
+  --primary-green: #27fc9e;
+  --dark-bg: #0a0a0f;
+  --darker-bg: #050508;
+  --light-text: #f0f0f0;
+  --neon-glow-purple: 0 0 10px rgba(181, 39, 252, 0.7), 0 0 20px rgba(181, 39, 252, 0.5), 0 0 30px rgba(181, 39, 252, 0.3);
+  --neon-glow-green: 0 0 10px rgba(39, 252, 158, 0.7), 0 0 20px rgba(39, 252, 158, 0.5), 0 0 30px rgba(39, 252, 158, 0.3);
+}
+
+@layer base {
+  body {
+    @apply bg-[var(--dark-bg)] text-[var(--light-text)] font-sans;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  a {
+    @apply text-[var(--primary-purple)] hover:text-[var(--primary-green)] transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .neon-purple {
+    color: var(--primary-purple);
+    text-shadow: var(--neon-glow-purple);
+  }
+  
+  .neon-green {
+    color: var(--primary-green);
+    text-shadow: var(--neon-glow-green);
+  }
+  
+  .neon-border-purple {
+    border-color: var(--primary-purple);
+    box-shadow: var(--neon-glow-purple);
+  }
+  
+  .neon-border-green {
+    border-color: var(--primary-green);
+    box-shadow: var(--neon-glow-green);
+  }
+
+  .btn {
+    @apply px-6 py-3 rounded-md font-bold transition-all duration-300 inline-block;
+  }
+
+  .btn-primary {
+    @apply bg-[var(--primary-purple)] text-white hover:bg-[var(--primary-green)] hover:text-[var(--darker-bg)];
+    box-shadow: var(--neon-glow-purple);
+  }
+
+  .btn-primary:hover {
+    box-shadow: var(--neon-glow-green);
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border-2 border-[var(--primary-purple)] text-[var(--primary-purple)] hover:border-[var(--primary-green)] hover:text-[var(--primary-green)];
+    box-shadow: var(--neon-glow-purple);
+  }
+
+  .btn-secondary:hover {
+    box-shadow: var(--neon-glow-green);
+  }
+
+  .card {
+    @apply bg-[var(--darker-bg)] rounded-lg p-6 border border-[var(--primary-purple)] transition-all duration-300;
+    box-shadow: var(--neon-glow-purple);
+  }
+
+  .card:hover {
+    @apply border-[var(--primary-green)];
+    box-shadow: var(--neon-glow-green);
+  }
+
+  .grid-pattern {
+    background-image: 
+      linear-gradient(rgba(181, 39, 252, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(181, 39, 252, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .cyberpunk-container {
+    @apply relative z-10 mx-auto px-4 py-8 max-w-7xl;
+  }
+
+  .glitch-effect {
+    position: relative;
+    animation: glitch 3s infinite;
+  }
+
+  @keyframes glitch {
+    0% {
+      transform: translate(0);
+    }
+    20% {
+      transform: translate(-2px, 2px);
+    }
+    40% {
+      transform: translate(-2px, -2px);
+    }
+    60% {
+      transform: translate(2px, 2px);
+    }
+    80% {
+      transform: translate(2px, -2px);
+    }
+    100% {
+      transform: translate(0);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  .gradient-text {
+    @apply font-bold;
+    background: linear-gradient(90deg, var(--primary-purple), var(--primary-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--darker-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-purple);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-green);
+}
+
+/* Custom cursor */
+* {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23b527fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>') 12 12, auto;
+}
+
+a, button, [role="button"] {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2327fc9e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>') 12 12, pointer;
+}
